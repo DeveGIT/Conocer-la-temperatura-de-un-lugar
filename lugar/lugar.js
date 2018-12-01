@@ -4,14 +4,14 @@
  */
 
 const axios = require('axios');
-
+const apiGoogleMaps = require('../api-keys/api-keys').apiGoogleMaps();
 
 
 const getInfoLugar = async(direccion) => {
 
     let encoderUrl = encodeURI(direccion);
 
-    let lugar = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${ encoderUrl }&key=AIzaSyDyJPPlnIMOLp20Ef1LlTong8rYdTnaTXM`);
+    let lugar = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${ encoderUrl }&key=${ apiGoogleMaps }`);
 
 
     if (lugar.data.status == 'ZERO_RESULTS') {
